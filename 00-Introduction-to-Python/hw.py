@@ -11,10 +11,10 @@ def is_permutation(a: str, b: str) -> bool:
 	b = ''.join(sorted(b))
 	print(a, b)
 	if a == b:
-		print("T")
+		print("True")
 		return True
 	else:
-		print("F")
+		print("False")
 		return False
 
 assert is_permutation('baba', 'abab')
