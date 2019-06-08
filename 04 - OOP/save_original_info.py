@@ -15,11 +15,23 @@ print(custom_sum.__original_func)  # <function custom_sum at <some_id>>
 import functools
 
 def my_decorator(func):
-    def atributs( *args, **kwargs):
-        atributs.__doc__ = func.__doc__
-        atributs.__name__ = func.__name__
-        atributs.__original_func = func
-        return atributs
+    def atributs(*args, **kwargs):
+        # atributs.__doc__ = func.__doc__
+        # atributs.__name__ = func.__name__
+        # atributs.__original_func = func
+        # print(atributs.__name__, atributs.__doc__)
+
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            print(result)
+            wrapper.__doc__ = func.__doc__
+            wrapper.__name__ = func.__name__
+            wrapper.__original_func = func
+            #   print(wrapper.__name__, wrapper.__doc__)
+            return wrapper
+        return wrapper
+
+        #return atributs
     return atributs
 
 def print_result(func):
