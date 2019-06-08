@@ -44,8 +44,7 @@ class Homework:
     def is_active(self):
         if datetime.datetime.now() < self.deadline:
             return True
-        else:
-            return False
+        return False
 
 class Teacher:
     def __init__(self, last_name, first_name):
@@ -53,7 +52,8 @@ class Teacher:
         self.first_name = first_name
 
     def create_homework(self, text, days):
-        return Homework(text, datetime.datetime.now() + datetime.timedelta(days=days))
+        return Homework(text, datetime.datetime.now() + 
+                            datetime.timedelta(days=days))
 
 class Student:
     def __init__(self, last_name, first_name):
@@ -63,9 +63,8 @@ class Student:
     def do_homework(self, hw: Homework):
         if hw.is_active():
             return hw
-        else:
-            print('You are late')
-            return None
+        print('You are late')
+        return None
 
 if __name__ == '__main__':
     teacher = Teacher('Daniil', 'Shadrin')
@@ -81,7 +80,7 @@ if __name__ == '__main__':
     # create function from method and use it
     create_homework_too = teacher.create_homework
     oop_homework = create_homework_too('create 2 simple classes', 5)
-    oop_homework.deadline  # 5 days, 0:00:00
+    oop_homework.deadline # 5 days, 0:00:00
 
     student.do_homework(oop_homework)
     student.do_homework(expired_homework)  # You are late
